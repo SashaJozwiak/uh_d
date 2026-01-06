@@ -10,7 +10,8 @@ export default function AuthCallback() {
         if (auth.isAuthenticated) {
             navigate("/main");
         }
-    }, [auth.isAuthenticated, navigate]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [auth.isAuthenticated]);
 
     return <p>Signing you in...</p>;
 }
