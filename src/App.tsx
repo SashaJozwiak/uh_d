@@ -6,7 +6,7 @@ function App() {
   const signOutRedirect = () => {
     const clientId = "4sars302msk26ni7i1ebns2gfn";
     const logoutUri = "https://app.youhold.online/";
-    const cognitoDomain = "https://youhold.auth.us-east-1.amazoncognito.com";
+    const cognitoDomain = "https://us-east-1helb0ld0p.auth.us-east-1.amazoncognito.com";
     window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
   };
 
