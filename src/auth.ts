@@ -3,5 +3,5 @@ export const cognitoAuthConfig = {
   client_id: "4sars302msk26ni7i1ebns2gfn", // App client ID
   redirect_uri: "https://app.youhold.online/auth/callback",
   response_type: "code",
-  scope: "openid email profile", // строго такие скопы для Google
+    scope: "openid email profile", // строго такие скопы для Google!
 };
