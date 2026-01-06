@@ -1,32 +1,22 @@
-import { useAuth } from "react-oidc-context";
+import { Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import AuthCallback from "./pages/AuthCallback";
+import Main from "./pages/Main";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
-function App() {
-  const auth = useAuth();
-
-  const signOutRedirect = () => {
-    const clientId = "4sars302msk26ni7i1ebns2gfn";
-    const logoutUri = "https://app.youhold.online/";
-    const cognitoDomain = "https://us-east-1helb0ld0p.auth.us-east-1.amazoncognito.com";
-    window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
-  };
-
-  if (auth.isLoading) return <div>Loading...</div>;
-  if (auth.error) return <div>Error: {auth.error.message}</div>;
-
-  if (auth.isAuthenticated) {
-    return (
-      <div>
-        <p>Welcome: {auth.user?.profile.email}</p>
-        <button onClick={signOutRedirect}>Sign out</button>
-      </div>
-    );
-  }
-
+export default function App() {
   return (
-    <div>
-      <button onClick={() => auth.signinRedirect()}>Sign in with Google</button>
-    </div>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/auth/callback" element={<AuthCallback />} />
+      <Route
+        path="/main"
+        element={
+          <ProtectedRoute>
+            <Main />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
   );
 }
-
-export default App;
