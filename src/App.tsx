@@ -4,6 +4,8 @@ import AuthCallback from "./pages/AuthCallback";
 import Main from "./pages/Main";
 import ProtectedRoute from "./pages/ProtectedRoute";
 
+import "./App.css";
+
 export default function App() {
   return (
     <Routes>

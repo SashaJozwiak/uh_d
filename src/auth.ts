@@ -4,4 +4,5 @@ export const cognitoAuthConfig = {
   redirect_uri: "https://app.youhold.online/auth/callback",
   response_type: "code",
     scope: "openid email profile", // строго такие скопы для Google!
+  automaticSilentRenew: false,
 };
