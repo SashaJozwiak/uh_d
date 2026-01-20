@@ -1,27 +1,51 @@
 import { useAuth } from "react-oidc-context";
 
 import uh_logo from '../assets/favicon-32x32.png'
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
     const auth = useAuth();
+    const navigate = useNavigate();
 
-    const signOutRedirect = () => {
+    /* const signOutRedirect = () => {
         const clientId = "4sars302msk26ni7i1ebns2gfn";
-        const logoutUri = "https://app.youhold.online/";
+        const logoutUri = encodeURIComponent("http://localhost:5173");//"https://app.youhold.online/";
         const cognitoDomain = "https://us-east-1helb0ld0p.auth.us-east-1.amazoncognito.com";
-        window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
-    };
+        //const idToken = auth.user?.id_token; // или auth.user?.access_token, если id_token нет
+        const idToken = auth.user?.id_token || auth.user?.access_token;
+        window.alert(`${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${logoutUri}&id_token_hint=${idToken}`)
+        window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${logoutUri}&id_token_hint=${idToken}`;
+        //window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
+    }; */
+
+    /*  const signOutRedirect = () => {
+         const clientId = "4sars302msk26ni7i1ebns2gfn";
+         const logoutUri = encodeURIComponent("http://localhost:5173");
+         const cognitoDomain = "https://us-east-1helb0ld0p.auth.us-east-1.amazoncognito.com";
+         const idToken = auth.user?.id_token || auth.user?.access_token;
+         if (!idToken) {
+             console.error("No ID token found!");
+             return;
+         }
+         const url = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${logoutUri}&id_token_hint=${idToken}`;
+         console.log("Logout URL:", url); // Проверьте URL в консоли
+         window.location.href = url;
+     }; */
 
     if (auth.isLoading) return <p>Loading...</p>;
     if (auth.error) return <p>Error: {auth.error.message}</p>;
 
-    if (auth.isAuthenticated) {
+    /* if (auth.isAuthenticated) {
         return (
             <div>
                 <p>Welcome: {auth.user?.profile.email}</p>
                 <button onClick={signOutRedirect}>Sign out</button>
             </div>
         );
+    } */
+
+    if (auth.isAuthenticated) {
+        navigate("/main");
     }
 
     return (
