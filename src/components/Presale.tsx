@@ -357,7 +357,7 @@ const activeBtn = {
 const input = {
     display: 'block',
     margin: '0 auto',
-    width: '20rem',
+    width: '7rem',
     padding: '0.6rem',
     marginTop: 6,
     borderRadius: 6,
