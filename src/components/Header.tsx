@@ -13,7 +13,7 @@ export const Header = () => {
 
     return (
         <header style={{
-            height: '5rem', background: '#1e293b', /* borderBottom: '1px solid #ddd', */
+            height: '60px', background: '#1e293b', /* borderBottom: '1px solid #ddd', */
             display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px', flexShrink: 0
         }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
