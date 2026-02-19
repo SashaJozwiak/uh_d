@@ -30,7 +30,8 @@ export const Presale = () => {
     const [amountUsd, setAmountUsd] = useState('');
     //const [currency, setCurrency] = useState('USDT');
     const [chain, setChain] = useState<'TON' | 'SOLANA'>('TON');
-    const { sendUSDT } = useSolanaTransfer("ChSPsvjQLw9UsiZzUL3QznwYmtQNta7o7cDkngpjkAoL");
+    //const { sendUSDT } = useSolanaTransfer("ChSPsvjQLw9UsiZzUL3QznwYmtQNta7o7cDkngpjkAoL");
+    const { sendUSDT } = useSolanaTransfer("Bm1aRcNioRhxZnzPXN4xg9kDaR4nisue9a9vZHHRGWc9");
 
 
     //const { tonAddress } = useAuthStore(state => state)
