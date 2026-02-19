@@ -6,6 +6,10 @@ import { Header } from "../components/Header";
 import { Sidebar } from '../components/Sidebar';
 import { useAuthStore } from "../store/user";
 import { Account } from "../components/Account";
+import { Presale } from "../components/Presale";
+import { Airdrop } from "../components/Airdrop";
+import { Achivments } from "../components/Achivments";
+import { Ambassadors } from "../components/Ambassadors";
 
 export default function Main() {
 
@@ -48,6 +52,10 @@ export default function Main() {
                 {/* MAIN BODY */}
                 <main style={{ flexGrow: 1, background: '#58677c', padding: '20px', overflowY: 'auto' }}>
                     {sidebar === 'account' && <Account />}
+                    {sidebar === 'presale' && <Presale />}
+                    {sidebar === 'airdrop' && <Airdrop />}
+                    {sidebar === 'achivs' && <Achivments />}
+                    {sidebar === 'ambassadors' && <Ambassadors />}
                 </main>
             </div>
         </div>

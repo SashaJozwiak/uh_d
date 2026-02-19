@@ -12,6 +12,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 /* html,
 body {
@@ -27,13 +32,18 @@ body {
   line-height: 1.6;
 } */
 
-a {
+a { 
+  all: unset;
+}
+
+/* a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
 }
+   */
 a:hover {
-  color: #535bf2;
+  color: rgb(127, 208, 90);
 }
 
 body {

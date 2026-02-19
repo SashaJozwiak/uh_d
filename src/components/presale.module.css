@@ -1,0 +1,39 @@
+.historytable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.historytable th,
+.historytable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.hash {
+    font-family: monospace;
+}
+
+/* Mobile */
+
+.historymobile {
+    display: none;
+}
+
+.historycard {
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+@media (max-width: 860px) {
+    .historytable {
+        display: none;
+    }
+
+    .historymobile {
+        display: block;
+    }
+}

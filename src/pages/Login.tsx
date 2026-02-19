@@ -55,7 +55,7 @@ export default function Login() {
 
             }}
         >
-            <div style={{ display: 'flex', justifyContent: 'center', width: '200px', height: '4rem', padding: '2rem', boxShadow: '4px 4px 8px 0px rgba(152, 158, 164, 0.2)', borderRadius: '0.5rem', marginTop: '20vh', backgroundColor: '#58677c' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', width: '200px', height: '10rem', padding: '2rem', boxShadow: '4px 4px 8px 0px rgba(152, 158, 164, 0.2)', borderRadius: '0.5rem', marginTop: '20vh', backgroundColor: '#58677c' }}>
                 <button
                     style={{
                         alignItems: 'center',
