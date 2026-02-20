@@ -13,6 +13,9 @@ import { useSolanaTransfer } from '../utils/useSolanaTransfer';
 //import { useAuth } from "react-oidc-context";
 
 import s from './presale.module.css'
+import { useWallet } from '@solana/wallet-adapter-react';
+import { useNav } from '../store/nav';
+//import { useTonConnectUI } from '@tonconnect/ui-react';
 
 
 const RECIPIENT_ADDRESS = 'UQCErfaAo0Hv2UWW8oWYb3LllMjLZGmVtV_yu3SJwolV95tD'
@@ -33,13 +36,24 @@ export const Presale = () => {
     const { sendUSDT } = useSolanaTransfer("ChSPsvjQLw9UsiZzUL3QznwYmtQNta7o7cDkngpjkAoL");
     //const { sendUSDT } = useSolanaTransfer("Bm1aRcNioRhxZnzPXN4xg9kDaR4nisue9a9vZHHRGWc9");
 
+    const { connected: solConnected } = useWallet();
+    const [tonConnectUI] = useTonConnectUI();
+    const { setSidebar } = useNav(state => state)
+
+    const isTonConnected = tonConnectUI.connected;
+    const isSolConnected = solConnected;
+
+    const isWalletConnected =
+        chain === 'TON'
+            ? isTonConnected
+            : isSolConnected;
 
     //const { tonAddress } = useAuthStore(state => state)
     const tonAddress = useTonAddress(false); // всегда актуальный адрес
 
 
     const auth = useAuth();
-    const [tonConnectUI] = useTonConnectUI();
+    //const [tonConnectUI] = useTonConnectUI();
 
     const tokensToReceive = useMemo(() => {
         const usd = Number(amountUsd);
@@ -182,7 +196,7 @@ export const Presale = () => {
                 <label>{`Amount (min 10 USDT)`}</label>
                 <input
                     type="number"
-                    placeholder="200 USDT"
+                    placeholder="USDT"
                     value={amountUsd}
                     onChange={(e) => setAmountUsd(e.target.value)}
                     style={input}
@@ -198,13 +212,13 @@ export const Presale = () => {
                         style={chain === 'TON' ? activeBtn : btn}
                         onClick={() => setChain('TON')}
                     >
-                        TON Wallet
+                        TON Wallet <br />
                     </button>
                     <button
                         style={chain === 'SOLANA' ? activeBtn : btn}
                         onClick={() => setChain('SOLANA')}
                     >
-                        Solana Wallet
+                        Solana Wallet Desktop <br /><span style={{ fontSize: '0.7rem' }}>(Tested: Binance wallet, Bybit wallet)</span> 
                     </button>
                 </div>
 
@@ -213,7 +227,13 @@ export const Presale = () => {
                     {/* {chain === 'TON' ? <TonConnectButton /> : <WalletMultiButton />} */}
                     <button
                         type="button"
-                        onClick={() => buy(chain, amountUsd)}
+                        onClick={() => {
+                            if (!isWalletConnected) {
+                                setSidebar('account');
+                                return;
+                            }
+                            buy(chain, amountUsd)
+                        }}
                         style={{
                             padding: '0.75rem 1.75rem', background: 'linear-gradient(135deg, #7fd05a, #5aa63b)',
                             boxShadow: '0 4px 15px rgba(102, 126, 234, .3)',
@@ -225,7 +245,7 @@ export const Presale = () => {
                             fontWeight: 'bold'
                         }}
                     >
-                        Get</button>
+                        {isWalletConnected ? 'Get' : 'Connect wallet'}</button>
                 </div>
 
 
@@ -351,14 +371,14 @@ const btn = {
 const activeBtn = {
     ...btn,
     background: 'rgb(30, 41, 59)',
-    borderColor: '#000',
+    borderColor: '#fcfcfc',
     color: '#ccc',
 };
 
 const input = {
     display: 'block',
     margin: '0 auto',
-    width: '20rem',
+    width: '7rem',
     padding: '0.6rem',
     marginTop: 6,
     borderRadius: 6,

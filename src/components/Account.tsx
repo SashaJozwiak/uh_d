@@ -14,6 +14,13 @@ export const Account = () => {
 
     const auth = useAuth();
 
+    const handleLogout = () => {
+        sessionStorage.clear();
+        //localStorage.removeItem('token');
+        //reset();
+        window.location.href = 'https://www.youhold.online/';
+    };
+
     // 1️⃣ Получаем nonce при монтировании
     useEffect(() => {
         const getNonce = async () => {
@@ -99,7 +106,13 @@ export const Account = () => {
     console.log('balances: ', airdropBalance, presaleBalance)
 
     return (
+        <>
+            <button
+                style={{ position: 'absolute', right: '0', top: '0', padding: '0.3rem', color: 'white', backgroundColor: 'rgb(30, 41, 59)', borderTop: 'none' }}
+                onClick={handleLogout}
+            >Logout</button>
         <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+
             <div style={{
                 border: '1px solid rgba(255, 255, 255, 0.15)',
                 borderRadius: '8px',
@@ -143,6 +156,8 @@ export const Account = () => {
                 <WalletMultiButton />
             </div>
 
+
+
             {/* <div style={{
                 border: '1px solid rgba(255, 255, 255, 0.15)',
                 borderRadius: '8px',
@@ -154,5 +169,6 @@ export const Account = () => {
                 <WalletMultiButton />
             </div> */}
         </div>
+        </>
     );
 };

@@ -134,7 +134,7 @@ export const Sidebar = () => {
                             <path d="M22 2L2.5 10.8c-1 .4-.9 1.8.1 2.1l4.8 1.5 1.8 5.5c.3.9 1.4 1.1 2 .4l2.9-3.3 4.9 3.6c.8.6 1.9.2 2.1-.8L24 3.6C24 2.4 22.9 1.6 22 2z" />
                         </svg>
                     </button>
-                    <span style={{ fontSize: '0.6rem', fontStyle: 'italic', color: 'gray' }}>© 2024-2026 | YouHold </span>
+                    <span style={{ fontSize: '0.7rem', fontStyle: 'italic', color: 'gray' }}>© 2024-2026 | YouHold </span>
                 </nav>
             </aside>
 

@@ -98,15 +98,15 @@ export const Airdrop = () => {
 
     }, [getBalances, token]);
 
-
     //console.log('bal: ', USDT)
 
     return (
         <>
-            <h1 style={{ marginBottom: '2rem' }}>Airdrop for
+            <h1 style={{ marginBottom: '1rem' }}>Airdrop for
                 <a style={{ textDecoration: 'underline', color: '#7fd05a', cursor: 'pointer' }} href="https://t.me/youhold_bot" target="_blank"
                     rel="noopener noreferrer"> YouHold app </a>
                 users</h1>
+            <p style={{ marginBottom: '1rem' }}>If you have balance and assets in YouHold app, you get +7% bonus</p>
             <div
                 style={{
                     width: '50vw',
@@ -143,12 +143,10 @@ export const Airdrop = () => {
                                 fontSize: '1rem',
                             }}
                         >
-                            Please connect the TON Wallet.
+                                Please connect the TON Wallet for check.
                         </button>
                     </>
                 )}
-
-
             </div>
 
             <div style={{
